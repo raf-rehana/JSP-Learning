@@ -1,27 +1,35 @@
-<%@ page import="dao.StudentDao" %>
-<%@ page import="entity.Student" %>
+<%@ page import="dao.StudentDao,entity.Student" %>
 
 <%
-    // Read form data
-    int id = Integer.parseInt(request.getParameter("id"));
+try {
+    String idParam = request.getParameter("id");
     String name = request.getParameter("name");
     String email = request.getParameter("email");
     String course = request.getParameter("course");
 
-    // Set into Student object
-    Student s = new Student();
-    s.setId(id);
-    s.setName(name);
-    s.setEmail(email);
-    s.setCourse(course);
+    if(idParam != null && !idParam.isEmpty()) {
 
-    // Call DAO update method
-    int status = StudentDao.update(s);
+        int id = Integer.parseInt(idParam);
 
-    // Redirect based on result
-    if(status > 0){
-        response.sendRedirect("allStudent.jsp");
+        Student s = new Student();
+        s.setId(id);
+        s.setName(name);
+        s.setEmail(email);
+        s.setCourse(course);
+
+        int status = StudentDao.update(s);
+
+        if(status > 0){
+            response.sendRedirect("allStudent.jsp");
+        } else {
+            out.println("<h3 style='color:red;text-align:center;'>Update failed!</h3>");
+        }
+
     } else {
-        out.println("Update failed!");
+        out.println("<h3 style='color:red;text-align:center;'>Invalid ID!</h3>");
     }
+
+} catch(Exception e){
+    out.println("<h3 style='color:red;text-align:center;'>Error: " + e.getMessage() + "</h3>");
+}
 %>

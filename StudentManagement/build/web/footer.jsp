@@ -1,7 +1,7 @@
-</div> <!-- closing container from header -->
+
 
 <footer style="
-    background-color: #2c3e50;
+    background-color: #A7ABDE;
     color: white;
     text-align: center;
     padding: 15px;

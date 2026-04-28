@@ -7,9 +7,7 @@ import util.DbUtil;
 
 public class StudentDao {
 
-    // =========================
-    // GET ALL STUDENTS
-    // =========================
+
     public static List<Student> getAllStudents() {
         List<Student> list = new ArrayList<>();
 
@@ -37,9 +35,6 @@ public class StudentDao {
         return list;
     }
 
-    // =========================
-    // GET STUDENT BY ID
-    // =========================
     public static Student getStudentById(int id) {
         Student s = null;
 
@@ -67,9 +62,7 @@ public class StudentDao {
         return s;
     }
 
-    // =========================
-    // SAVE STUDENT
-    // =========================
+
     public static int save(Student s) {
         int status = 0;
 
@@ -92,9 +85,7 @@ public class StudentDao {
         return status;
     }
 
-    // =========================
-    // UPDATE STUDENT
-    // =========================
+
     public static int update(Student s) {
         int status = 0;
 
@@ -118,9 +109,7 @@ public class StudentDao {
         return status;
     }
 
-    // =========================
-    // DELETE STUDENT
-    // =========================
+
     public static int delete(int id) {
         int status = 0;
 
