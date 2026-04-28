@@ -1,4 +1,4 @@
-<%@ page import="dao.StudentDao,java.util.*,entity.Student" %>
+<%@ page import="dao.EmployeeDao,java.util.*,entity.Employee" %>
 
 <%@ include file="header.jsp" %>
 
@@ -11,6 +11,7 @@
     h2 {
         text-align: center;
         margin-top: 20px;
+        color: #2c3e50;
     }
 
     .container {
@@ -25,7 +26,7 @@
         color: white;
         text-decoration: none;
         border-radius: 5px;
-        margin-bottom: 15px;
+        margin: 15px 0;
     }
 
     table {
@@ -49,54 +50,66 @@
         background: #f2f2f2;
     }
 
-    .edit-btn, .delete-btn {
+    .edit-btn {
+        background: #3498db;
+        color: white;
         padding: 6px 10px;
         border-radius: 4px;
-        color: white;
         text-decoration: none;
     }
 
-    .edit-btn { background: #3498db; }
-    .delete-btn { background: #e74c3c; }
+    .delete-btn {
+        background: #e74c3c;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .edit-btn:hover { background: #2980b9; }
+    .delete-btn:hover { background: #c0392b; }
 
     .no-data {
         text-align: center;
         padding: 15px;
-        color: #777;
+        color: gray;
     }
 </style>
 
 <div class="container">
 
-<h2>All Students</h2>
+<h2>All Employees</h2>
 
-<a href="<%=request.getContextPath()%>/addStudent.jsp" class="add-btn">+ Add Student</a>
+<a href="<%=request.getContextPath()%>/addEmployee.jsp" class="add-btn">+ Add Employee</a>
 
 <table>
     <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Course</th>
+        <th>Department</th>
+        <th>Salary</th>
         <th>Action</th>
     </tr>
 
 <%
-List<Student> list = StudentDao.getAllStudents();
+List<Employee> list = EmployeeDao.getAll();
 
 if(list != null && !list.isEmpty()) {
-    for(Student s : list){
+    for(Employee e : list){
 %>
 
     <tr>
-        <td><%=s.getId()%></td>
-        <td><%=s.getName()%></td>
-        <td><%=s.getEmail()%></td>
-        <td><%=s.getCourse()%></td>
+        <td><%=e.getId()%></td>
+        <td><%=e.getName()%></td>
+        <td><%=e.getEmail()%></td>
+        <td><%=e.getDepartment()%></td>
+        <td><%=e.getSalary()%></td>
         <td>
-            <a href="<%=request.getContextPath()%>/editStudent.jsp?id=<%=s.getId()%>" class="edit-btn">Edit</a>
-            <a href="<%=request.getContextPath()%>/delete.jsp?id=<%=s.getId()%>" class="delete-btn"
-               onclick="return confirm('Are you sure to delete?')">
+            <a href="editEmployee.jsp?id=<%=e.getId()%>" class="edit-btn">Edit</a>
+            <a href="deleteEmployee.jsp?id=<%=e.getId()%>" 
+               class="delete-btn"
+               onclick="return confirm('Are you sure?')">
                Delete
             </a>
         </td>
@@ -108,10 +121,12 @@ if(list != null && !list.isEmpty()) {
 %>
 
     <tr>
-        <td colspan="5" class="no-data">No students found</td>
+        <td colspan="6" class="no-data">No Employees Found</td>
     </tr>
 
-<% } %>
+<%
+}
+%>
 
 </table>
 

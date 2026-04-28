@@ -7,8 +7,8 @@
     }
 
     .form-container {
-        width: 400px;
-        margin: 50px auto;
+        width: 420px;
+        margin: 60px auto;
         background: #ffffff;
         padding: 25px 30px;
         border-radius: 8px;
@@ -29,7 +29,6 @@
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: #333;
     }
 
     .form-group input {
@@ -59,31 +58,48 @@
     .btn:hover {
         background: #219150;
     }
+
+    .back {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #3498db;
+    }
 </style>
 
 <div class="form-container">
-    <h2>Add Student</h2>
 
-    <form action="<%=request.getContextPath()%>/saveStudent.jsp" method="post">
+    <h2>Add Employee</h2>
+
+    <form action="<%=request.getContextPath()%>/saveEmployee.jsp" method="post">
 
         <div class="form-group">
             <label>Name</label>
-            <input type="text" name="name" placeholder="Enter student name" required>
+            <input type="text" name="name" placeholder="Enter name" required>
         </div>
 
         <div class="form-group">
             <label>Email</label>
-            <input type="email" name="email" placeholder="Enter email address" required>
+            <input type="email" name="email" placeholder="Enter email" required>
         </div>
 
         <div class="form-group">
-            <label>Course</label>
-            <input type="text" name="course" placeholder="Enter course name" required>
+            <label>Department</label>
+            <input type="text" name="department" placeholder="Enter department" required>
         </div>
 
-        <input type="submit" value="Save Student" class="btn">
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="number" name="salary" placeholder="Enter salary" required>
+        </div>
+
+        <input type="submit" value="Save Employee" class="btn">
 
     </form>
+
+    <a href="<%=request.getContextPath()%>/home.jsp" class="back">? Back to Home</a>
+
 </div>
 
 <%@ include file="footer.jsp" %>
