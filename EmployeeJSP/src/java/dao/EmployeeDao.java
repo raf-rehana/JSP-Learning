@@ -25,7 +25,7 @@ public class EmployeeDao {
             ps.setDouble(4, e.getSalary());
 
             status = ps.executeUpdate();
-
+            ps.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -117,7 +117,7 @@ public class EmployeeDao {
             ps.setInt(5, e.getId());
 
             status = ps.executeUpdate();
-
+            ps.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -141,7 +141,7 @@ public class EmployeeDao {
             ps.setInt(1, id);
 
             status = ps.executeUpdate();
-
+            ps.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
